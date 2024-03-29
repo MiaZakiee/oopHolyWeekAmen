@@ -14,27 +14,15 @@ public class Arithmetic <X extends Number, Y extends Number> {
     }
 
     public Number add() {
-        if (isFloat()) {
-            return numA.doubleValue() + numB.doubleValue();
-        } else {
-            return numA.intValue() + numB.intValue();
-        }
+        return (isFloat() ? numA.doubleValue() + numB.doubleValue() : numA.intValue() + numB.intValue());
     }
 
     public Number subtract() {
-        if (isFloat()) {
-            return numA.doubleValue() - numB.doubleValue();
-        } else {
-            return numA.intValue() - numB.intValue();
-        }
+        return (isFloat() ? numA.doubleValue() - numB.doubleValue() : numA.intValue() - numB.intValue());
     }
 
     public Number multiply() {
-        if (isFloat()) {
-            return numA.doubleValue() * numB.doubleValue();
-        } else {
-            return numA.intValue() * numB.intValue();
-        }
+        return (isFloat() ? numA.doubleValue() * numB.doubleValue() : numA.intValue() * numB.intValue());
     }
 
     public Number divide() {
