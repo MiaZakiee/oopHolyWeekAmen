@@ -13,12 +13,12 @@ public class Main {
         System.out.println(e.getMax());
 
 //        Map
-        Map<String,String> map = new Map<String, String>();
-        map.put("Hello","World");
-        map.put("iMiss","You");
-        map.display();
-        System.out.println(map.get("iMiss"));
-        System.out.println(map.remove("Hello"));
-        map.display();
+        MyMap<String,String> myMap = new MyMap<>();
+        myMap.put("Hello","World");
+        myMap.put("iMiss","You");
+        myMap.display();
+        System.out.println(myMap.get("iMiss"));
+        System.out.println(myMap.remove("Hello"));
+        myMap.display();
     }
 }

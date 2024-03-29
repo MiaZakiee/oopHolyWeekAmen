@@ -3,18 +3,18 @@ package Map;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Map <A,B> {
+public class MyMap<A,B> {
     private final List<A> key;
     private final List<B> value;
 
-    public Map (A key, B value) {
+    public MyMap(A key, B value) {
         this.key = new ArrayList<>();
         this.value = new ArrayList<>();
         this.key.add(key);
         this.value.add(value);
     }
 
-    public Map () {
+    public MyMap() {
         this.key = new ArrayList<>();
         this.value = new ArrayList<>();
     }
