@@ -1,75 +1,59 @@
 package Arithmetic;
 
-import java.util.*;
-
 public class Arithmetic <X extends Number, Y extends Number> {
-    private X numA;
-    private Y numB;
-    List<String> validDataTypes = List.of("java.lang.Integer",
-                                        "java.lang.Float",
-                                        "java.lang.Double",
-                                        "java.lang.Long",
-                                        "java.lang.Short");
+    private final X numA;
+    private final Y numB;
 
     public Arithmetic (X numA, Y numB) {
-        try {
-            String dataTypeA = ((Object) numA).getClass().getName();
-            String dataTypeB = ((Object) numB).getClass().getName();
-            if (!validDataTypes.contains(dataTypeA) || !validDataTypes.contains(dataTypeB)) {
-                throw new IllegalArgumentException();
-            }
-
-            this.numA = numA;
-            this.numB = numB;
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid data type(s) used.");
+        if (!(numA instanceof Number) || !(numB instanceof Number)) {
+            throw new IllegalArgumentException("Invalid input!");
         }
+
+        this.numA = numA;
+        this.numB = numB;
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends Number> T add() {
-        if (numA instanceof Float || numA instanceof Double || numB instanceof Float || numB instanceof Double) {
-            return (T) ((Number) (numA.floatValue() + numB.floatValue()));
+    public Number add() {
+        if (isFloat()) {
+            return numA.doubleValue() + numB.doubleValue();
         } else {
-            return (T) ((Number) (numA.intValue() + numB.intValue()));
+            return numA.intValue() + numB.intValue();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends Number> T subtract() {
-        if (numA instanceof Float || numA instanceof Double || numB instanceof Float || numB instanceof Double) {
-            return (T) ((Number) (numA.floatValue() - numB.floatValue()));
+    public Number subtract() {
+        if (isFloat()) {
+            return numA.doubleValue() - numB.doubleValue();
         } else {
-            return (T) ((Number) (numA.intValue() - numB.intValue()));
+            return numA.intValue() - numB.intValue();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends Number> T multiply() {
-        if (numA instanceof Float || numA instanceof Double || numB instanceof Float || numB instanceof Double) {
-            return (T) ((Number) (numA.floatValue() * numB.floatValue()));
+    public Number multiply() {
+        if (isFloat()) {
+            return numA.doubleValue() * numB.doubleValue();
         } else {
-            return (T) ((Number) (numA.intValue() * numB.intValue()));
+            return numA.intValue() * numB.intValue();
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends Number> T divide() {
-        try {
-            return (T) ((Number) (numA.floatValue() / numB.floatValue()));
-        } catch (ArithmeticException e) {
-            throw new ArithmeticException("Invalid Operation");
+    public Number divide() {
+        if (numB.equals(0)) {
+            throw new ArithmeticException("Cannot Divide with Zero");
         }
+        return numA.doubleValue() / numB.doubleValue();
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends Number> T getMin() {
-        return (T) (numA.floatValue() < numB.floatValue() ? numA : numB);
+    public Number getMin() {
+        return (numA.doubleValue() < numB.doubleValue() ? numA : numB);
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends Number> T getMax() {
-        return (T) (numA.floatValue() > numB.floatValue() ? numA : numB);
+    public Number getMax() {
+        return (numA.doubleValue() > numB.doubleValue() ? numA : numB);
+    }
+
+    private boolean isFloat () {
+        return (numA instanceof Float || numA instanceof Double || numB instanceof Float || numB instanceof Double);
     }
 
     public void display () {

@@ -3,15 +3,14 @@ import Map.*;
 
 public class Main {
     public static void main(String[] args) {
-        Arithmetic<Integer,Float> e = new Arithmetic<>(400,32F);
+        Arithmetic<Integer,Double> e = new Arithmetic<>(400,32.43);
         e.display();
-        System.out.println();
-        e.add();
-        e.subtract();
-        e.multiply();
-        e.divide();
-        e.getMin();
-        e.getMax();
+        System.out.println(e.add());
+        System.out.println(e.subtract());
+        System.out.println(e.multiply());
+        System.out.println(e.divide());
+        System.out.println(e.getMin());
+        System.out.println(e.getMax());
 
 //        Map
         Map<String,String> map = new Map<String, String>();

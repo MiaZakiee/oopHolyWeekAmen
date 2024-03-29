@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Map <A,B> {
-    private List<A> key;
-    private List<B> value;
+    private final List<A> key;
+    private final List<B> value;
 
     public Map (A key, B value) {
-        this.key = new ArrayList<A>();
-        this.value = new ArrayList<B>();
+        this.key = new ArrayList<>();
+        this.value = new ArrayList<>();
         this.key.add(key);
         this.value.add(value);
     }
 
     public Map () {
-        this.key = new ArrayList<A>();
-        this.value = new ArrayList<B>();
+        this.key = new ArrayList<>();
+        this.value = new ArrayList<>();
     }
 
     public void put (A key, B value) {
